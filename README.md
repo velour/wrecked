@@ -1,4 +1,4 @@
-# Wrecked [working title]
+# Wrecked
 
 _An island survival game_
 
