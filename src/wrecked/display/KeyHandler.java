@@ -40,7 +40,6 @@ public class KeyHandler implements KeyListener {
 			}
 		} else if (asChar == KeyHandler.endAdvancedCommand) {
 			if (this.takingAdvancedCommand) {
-				this.takingAdvancedCommand = false;
 				String cmd = this.advancedCommand();
 				System.out.println("Advanced Command " + cmd);
 			}
