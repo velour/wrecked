@@ -1,0 +1,56 @@
+* Documentation
+
+** Convert design notebook to something that can go in git, upload
+   Less important unless someone decides to work on the projet with me
+
+** Manifest at the top level
+   Decide on what structure project should have, lay it out in a document.
+   Then, as you add files, crib their high level descriptions into the manifest.
+
+* Assets
+** Basic land tiles
+
+** A couple of test images for crafting minigames
+   I think I'm going to tackle the crafting minigames right after there's some scaffolding
+   for dealing with a game / player in place.  I'll only need a hand full of images to
+   test these pieces
+
+** A single sound effect, A single music track
+   for debugging volume mixing and volume leveling
+
+* Programming
+** Interacting with the game
+   Going to start off with the bits of code that allow the player to interact with the game itself.  So, Screen, ScreenStack, that sort of thing.
+
+** Crafting Minigames
+   These have the fewest number of moving parts, so we should probably tackle these first. That'll give us something concrete to show folks in terms of progress. We don't need to do all of them, just one or two , so that we can work out the interaction kinks between the ScreenStack, the Screen, and the subclasses of screen that actually relate to a bit of the game.
+
+** World Representation / Worldgen
+   The next big piece will be world representation and world generation.  Initially, there won't be any interaction here, just generating and rendering rooms. Then generating entire worlds, and using the map screen and room screens to do some simple navigation. Ultimately the interaction on the room and map screens will be more complicated than the interaction for the puzzels, but not initially.
+
+** Structure / Vegetation Generation
+   Once we have map tiles being laid down, we can start to think about placing structures and trees and so on.
+
+** Saving / Loading World State
+   After generation is in hand, then we need to start thinking about marshaling the state of the game to and from the disk.
+
+** Add the player
+   Once we have vegetation and saving / loading world state, we can implement the first real version of the rogue / survival portion of the game.  There will be neither enemies nor game, but we can start balancing hunger and thirst rates, and work on the basic crafting recipes.
+
+** Add some npcs
+   Animals, game to hunt, threats to the player.  Once we've got some of the survival interactions hammered out from the previous phase, we can start to consider adding in npcs, working out the kinks in the initiative and combat systems, etc.
+
+** Saving / Loading World State II
+   Figure out how to save / load the state of the player and NPCs.
+
+** Add a set piece
+   There are a few set pieces that we want in the game.  A mountaintop volcano, a crashed plane, a pirate horde and ghost ship.   Once we have world and npc marshaling, we have everything we need to design the set pieces.
+
+** Add Title Screen, Configuration Screen, new / load / delete
+   Configuration limited to key binds, volume levels, log levels
+
+** Add a Death Screen
+   Just something a little nicer than the previous watching your dead character lie there until you quit the game.  Something with gameplay statistics / score -- maybe the world seed as well?
+
+** Add a Win Condition
+   Start coding in win conditions for the game.  The first one is probably the 'sustainable island hermit' victory.  Once we have a single victory condition, the game will, roughtly  be feature complete.  Beyond here, everything else will be embellishment and polish.
