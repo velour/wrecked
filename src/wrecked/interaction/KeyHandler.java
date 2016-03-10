@@ -1,4 +1,4 @@
-package wrecked.display;
+package wrecked.interaction;
 
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
