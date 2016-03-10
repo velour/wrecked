@@ -11,9 +11,7 @@
 ** Basic land tiles
 
 ** A couple of test images for crafting minigames
-   I think I'm going to tackle the crafting minigames right after there's some scaffolding
-   for dealing with a game / player in place.  I'll only need a hand full of images to
-   test these pieces
+  I think I'm going to tackle the crafting minigames right after there's some scaffolding for dealing with a game / player in place.  I'll only need a hand full of images to test these pieces
 
 ** A single sound effect, A single music track
    for debugging volume mixing and volume leveling
