@@ -27,4 +27,9 @@ public abstract class Command {
 	public String getIssuedBy(){
 		return this.issuedBy;
 	}
+	
+	public static Command get(){
+		//Returns the command itself
+		return null;
+	}
 }

@@ -9,8 +9,8 @@ package wrecked.interaction;
  * We're basically using the class hierarchy to implement a sum-type, since
  * java doesn't support those directly.
  */
-public class SimpleCommand extends Command {
-	public SimpleCommand(char ib){
+public abstract class SimpleCommand extends Command {
+	protected SimpleCommand(char ib){
 		/* This should eventually be impossible.  We should only construct 
 		 * 	commands when we have both the long and the short descriptions
 		 *  that we intend to use for those commands.
@@ -25,7 +25,7 @@ public class SimpleCommand extends Command {
 	/*
 	 * The actual constructor that we intend to use.
 	 */
-	public SimpleCommand(char ib, String lng, String shrt){
+	protected SimpleCommand(char ib, String lng, String shrt){
 		this.issuedBy = "" + ib;
 		this.longDescription = lng;
 		this.shortDescription = shrt;
