@@ -2,6 +2,7 @@ package wrecked.interaction;
 
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import wrecked.display.ScreenStack;
 
 public class KeyHandler implements KeyListener {
 	private boolean takingAdvancedCommand = false;
