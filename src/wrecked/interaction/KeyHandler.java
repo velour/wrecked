@@ -71,6 +71,8 @@ public class KeyHandler implements KeyListener {
 	public static void main(String[] args) {
 		// Test code for key listener
 		ScreenStack testingArea = new ScreenStack();
+		WindowCloseListener wcl = new WindowCloseListener();
+		testingArea.addWindowListener(wcl);
 		KeyHandler kh = new KeyHandler();
 		testingArea.addKeyListener(kh);
 	}
