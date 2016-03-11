@@ -5,7 +5,7 @@ package wrecked.interaction;
 
 /**
  * @author jthayer
- * Top of the Command Class heirarchy.  Represents all commands,
+ * Top of the Command Class hierarchy.  Represents all commands,
  * independent of whether they're issued by an entire string, a single character, or
  * a mouse click.
  */
