@@ -17,17 +17,13 @@ public abstract class SimpleCommand extends Command {
 		 *  
 		 *  In the interim, while we're just doing stove piping, this is O.K.
 		 */
-		this.issuedBy = "" + ib;
-		this.longDescription = Command.DEFAULT_LONG;
-		this.shortDescription = Command.DEFAULT_SHORT;
+		super(ib + "", Command.DEFAULT_LONG, Command.DEFAULT_SHORT);
 	}
 	
 	/*
 	 * The actual constructor that we intend to use.
 	 */
 	protected SimpleCommand(char ib, String lng, String shrt){
-		this.issuedBy = "" + ib;
-		this.longDescription = lng;
-		this.shortDescription = shrt;
+		super(ib +"", lng, shrt);
 	}
 }

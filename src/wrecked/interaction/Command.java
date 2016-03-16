@@ -16,6 +16,18 @@ public abstract class Command {
 	protected String longDescription;
 	protected String issuedBy;
 	
+	protected Command(String ib, String ld, String sd){
+		/* This should eventually be impossible.  We should only construct 
+		 * 	commands when we have both the long and the short descriptions
+		 *  that we intend to use for those commands.
+		 *  
+		 *  In the interim, while we're just doing stove piping, this is O.K.
+		 */
+		this.issuedBy = ib;
+		this.longDescription = ld;
+		this.shortDescription = sd;
+	}
+	
 	public String getShortDesc(){
 		return this.shortDescription;
 	}
