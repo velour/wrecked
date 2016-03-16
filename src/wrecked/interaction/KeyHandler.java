@@ -10,6 +10,50 @@ public class KeyHandler implements KeyListener {
 	public static final char startAdvancedCommand = ':';
 	public static final char endAdvancedCommand = '\n';
 
+	public CommandHandler cHandler = null;
+
+	/*
+	 * Default KeyHandler Constructor I want this for convenience during initial
+	 * programming and debugging Eventually we'll do away with this constructor
+	 * because we're only going to allow someone to construct a keyhandler while
+	 * passing in the command handler
+	 */
+	public KeyHandler() {
+		System.out.println("DANGER: Constructing a KeyHandler without a CommandHandler!");
+	}
+	
+	public KeyHandler(CommandHandler cmdHnd){
+		this.cHandler = cmdHnd;
+	}
+	
+	private void issueCommand(Command c){
+		if(this.cHandler != null){
+			if(c != null){
+				this.cHandler.handleCommand(c);
+			}
+		}else{
+			//throw an error which I'll write in just a second
+			System.out.println("Trying to issue a command without a command handler. This is bad!");
+			System.exit(1);
+		}
+	}
+	
+	private void constructCommand(char c){
+		Command cmd = null;
+		// we know this has to be a simple command, so we can use simple command specific construction
+		this.issueCommand(cmd);
+	}
+	
+	private void constructCommand(String s){
+		Command cmd = null;
+		// we know this has to be an advanced command, so we can use advanced command specific constructions
+		// this is super gross and has to be replaced JTT 3-16
+		if (s.compareTo(":exit") == 0){ // if s is exactly :exit
+			cmd = ExitCommand.get();
+		}
+		this.issueCommand(cmd);
+	}
+
 	/*
 	 * Return the advanced command in the command buffer clear the buffer, and
 	 * set up a new one to accept the next advanced command
@@ -43,15 +87,18 @@ public class KeyHandler implements KeyListener {
 			if (this.takingAdvancedCommand) {
 				String cmd = this.advancedCommand();
 				System.out.println("Advanced Command " + cmd);
+				this.constructCommand(cmd);
 			}
 			// Otherwise, they just pressed return.
 		} else {
 			if (this.takingAdvancedCommand) {
-				// Only printable characters, but we may wish to do more filtering
+				// Only printable characters, but we may wish to do more
+				// filtering
 				this.advancedCommandBuffer.append(asChar);
 			} else {
 				// not in advanced command, just a keystroke.
 				System.out.println("KeyTyped:" + e.getKeyChar());
+				this.constructCommand(asChar);
 			}
 		}
 	}
@@ -73,7 +120,7 @@ public class KeyHandler implements KeyListener {
 		ScreenStack testingArea = new ScreenStack();
 		WindowCloseListener wcl = new WindowCloseListener();
 		testingArea.addWindowListener(wcl);
-		KeyHandler kh = new KeyHandler();
+		KeyHandler kh = new KeyHandler(testingArea);
 		testingArea.addKeyListener(kh);
 	}
 }

@@ -1,13 +1,15 @@
 package wrecked.display;
 
 import javax.swing.JLabel;
+import wrecked.interaction.Command;
+import wrecked.interaction.CommandHandler;
 
 /*
  *   Simplest possible screen.  Just draws a line of text to the window.
  *   Primarily used in testing the functionality of the screen stack.
  */
 
-public class TestScreen extends Screen {
+public class TestScreen extends Screen implements CommandHandler {
 	/**
 	 *   I don't really care about the UID.  These things should never be
 	 *   marshaled.
@@ -26,6 +28,10 @@ public class TestScreen extends Screen {
 		super();
 		this.id = s;
 		this.init();
+	}
+	
+	public boolean handleCommand(Command c){
+		return false;
 	}
 	
 	private void init(){

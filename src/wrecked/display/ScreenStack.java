@@ -3,8 +3,11 @@ package wrecked.display;
 import java.awt.BorderLayout;
 import java.util.Stack;
 import javax.swing.JFrame;
+import wrecked.interaction.CommandHandler;
+import wrecked.interaction.ExitCommand;
+import wrecked.interaction.Command;
 
-public class ScreenStack extends JFrame {
+public class ScreenStack extends JFrame implements CommandHandler {
 
 	private static final long serialVersionUID = -2213400080395727165L;
 	private static final TestScreen bare = new TestScreen("Bare Screen Stack");
@@ -15,6 +18,23 @@ public class ScreenStack extends JFrame {
 		this.setSize(800, 600);
 		this.setVisible(true);
 		this.push(bare); // just for display debugging, eventually we'll pull this.
+	}
+	
+	public boolean handleCommand(Command c){
+		// First, see if it's a command for the
+		if(!this.screens.empty()){
+			Screen s = this.screens.peek();
+			if(s.handleCommand(c)){
+				return true;
+			}
+		}
+		// otherwise the stack was empty, or the top element didn't handle the command.
+		// maybe we handle the command ourselves?
+		if(c instanceof ExitCommand){
+			this.exit();
+			return true;
+		}
+		return false;
 	}
 	
 	// pushes a screen to the top of the stack
@@ -42,6 +62,11 @@ public class ScreenStack extends JFrame {
 			this.getContentPane().add(p,BorderLayout.CENTER);
 		}
 		return toRemove;
+	}
+	
+	public void exit(){
+		System.out.println("Exiting...");
+		System.exit(0);
 	}
 	
 	// Testing code lives beyond here.
