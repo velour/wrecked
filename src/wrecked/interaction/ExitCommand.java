@@ -10,7 +10,6 @@ import wrecked.interaction.AdvancedCommand;
  *
  */
 public class ExitCommand extends AdvancedCommand { 
-	private static Command cmd;
 	
 	protected ExitCommand(String ib, String lng, String shrt) {
 		super(ib, lng, shrt);
@@ -24,9 +23,10 @@ public class ExitCommand extends AdvancedCommand {
 	}
 
 	public static Command get() {
-		if(ExitCommand.cmd == null){
-			ExitCommand.cmd = ExitCommand.init(); 
+		// first time setup of the command object
+		if(ExitCommand.me == null){
+			ExitCommand.me = ExitCommand.init(); 
 		}
-		return ExitCommand.cmd;
+		return ExitCommand.me;
 	}
 }

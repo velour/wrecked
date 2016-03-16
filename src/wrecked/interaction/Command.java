@@ -12,9 +12,24 @@ package wrecked.interaction;
 public abstract class Command {
 	protected static final String DEFAULT_LONG = "DEFAULT LONG DESCRIPTION";
 	protected static final String DEFAULT_SHORT = "DEFAULT SHORT DESCRIPTION";
+	protected static Command me;
 	protected String shortDescription;
 	protected String longDescription;
 	protected String issuedBy;
+	
+	protected Command(char ib){
+		assert(Command.me == null);
+		this.issuedBy = "" + ib;
+		this.shortDescription = Command.DEFAULT_SHORT;
+		this.longDescription = Command.DEFAULT_LONG;
+	}
+	
+	protected Command(String ib){
+		assert(Command.me == null);
+		this.issuedBy = ib;
+		this.shortDescription = Command.DEFAULT_SHORT;
+		this.longDescription = Command.DEFAULT_LONG;
+	}
 	
 	protected Command(String ib, String ld, String sd){
 		/* This should eventually be impossible.  We should only construct 
@@ -23,6 +38,7 @@ public abstract class Command {
 		 *  
 		 *  In the interim, while we're just doing stove piping, this is O.K.
 		 */
+		assert(Command.me == null);
 		this.issuedBy = ib;
 		this.longDescription = ld;
 		this.shortDescription = sd;
@@ -40,8 +56,9 @@ public abstract class Command {
 		return this.issuedBy;
 	}
 	
+	
 	public static Command get(){
 		//Returns the command itself
-		return null;
+		return Command.me;
 	}
 }
