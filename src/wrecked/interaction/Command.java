@@ -22,6 +22,7 @@ public abstract class Command {
 		this.issuedBy = "" + ib;
 		this.shortDescription = Command.DEFAULT_SHORT;
 		this.longDescription = Command.DEFAULT_LONG;
+		System.out.println("Command issued by " + ib + " created without descriptions. Fill these in!");
 	}
 	
 	protected Command(String ib){
@@ -29,6 +30,7 @@ public abstract class Command {
 		this.issuedBy = ib;
 		this.shortDescription = Command.DEFAULT_SHORT;
 		this.longDescription = Command.DEFAULT_LONG;
+		System.out.println("Command issued by " + ib + " created without descriptions. Fill these in!");
 	}
 	
 	protected Command(String ib, String ld, String sd){
