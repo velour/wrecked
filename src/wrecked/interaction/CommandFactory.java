@@ -14,6 +14,7 @@ public class CommandFactory {
 	public static Command getAdvanced(String s){
 		// This is sort of gross, and we should be using a HashMap or a Trie
 		switch(s){
+		// This can't be hard coded.  How do we get this information here? JTT 3-16
 		case ":exit" :
 			return ExitCommand.get();
 		default:
