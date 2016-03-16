@@ -39,18 +39,14 @@ public class KeyHandler implements KeyListener {
 	}
 	
 	private void constructCommand(char c){
-		Command cmd = null;
+		Command cmd = CommandFactory.getSimple(c);
 		// we know this has to be a simple command, so we can use simple command specific construction
 		this.issueCommand(cmd);
 	}
 	
 	private void constructCommand(String s){
-		Command cmd = null;
 		// we know this has to be an advanced command, so we can use advanced command specific constructions
-		// this is super gross and has to be replaced JTT 3-16
-		if (s.compareTo(":exit") == 0){ // if s is exactly :exit
-			cmd = ExitCommand.get();
-		}
+		Command cmd = CommandFactory.getAdvanced(s);
 		this.issueCommand(cmd);
 	}
 
